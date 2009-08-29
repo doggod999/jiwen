@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>
+	技闻-文章推荐
+</title>
+{% endblock%}
+
+{% block content %}
+<div class="single"> 
+	感谢您对本网站的支持！请提交您推荐的文章链接，我们的管理员将会以最快的速度收录。<br/>
+	<div class="message">{{message}}</div>
+	<br/>
+	<form action="/reconmend/save/" method="POST">
+		文章链接：<input type="text" name="url" size="70" value="http://"/>
+		<input type="submit" value="提交">
+	</form>
+</div>
+<div class="clear"></div>
+{% endblock %}

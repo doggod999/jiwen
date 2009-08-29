@@ -11,8 +11,17 @@ from google.appengine.api import users
 from google.appengine.ext import db
 
 from models import Article
-from helper import article_save
 import static
+
+def article_save(article):
+    id = 0
+    try:
+        aritcles = Article.all().order('-id')
+        id = aritcles[0].id + 1
+    except:
+        id = 1
+    article.id = id
+    article.put()
 
 def index(request):
 	articles_newest = db.GqlQuery("SELECT * FROM Article ORDER BY id DESC").fetch(10)
@@ -46,7 +55,7 @@ def article(request, article_id):
 			   }
 	return render_to_response('article.html', context)
 
-def login(request):
+def admin(request):
 	login_user = users.get_current_user()
 	login_url = users.create_login_url(request.get_full_path())
 	is_user_admin = users.is_current_user_admin()
@@ -61,14 +70,14 @@ def login(request):
 
 def write(request):
 	if not users.is_current_user_admin():
-		return HttpResponseRedirect('/login/')
+		return HttpResponseRedirect('/admin/')
 	context = {'categories':static.categories
 			   }
 	return render_to_response('write.html', context)
 
 def save(request, article_id=None):
 	if not users.is_current_user_admin():
-		return HttpResponseRedirect('/login/')
+		return HttpResponseRedirect('/admin/')
 	if request.method == 'POST':
 		if article_id:
 			article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
