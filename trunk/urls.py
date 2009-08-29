@@ -3,7 +3,7 @@
 from django.conf.urls.defaults import *
 urlpatterns = patterns('',
     (r'^$',                             'views.index'),
-    (r'^login/$',                       'views.login'),
+    (r'^admin/$',                       'views.admin'),
     (r'^robots.txt$',                   'views.robots'),
     
     #发表、编辑文章
@@ -16,5 +16,10 @@ urlpatterns = patterns('',
     #网站图标
     (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/media/style/images/favicon.ico'}),
 
+    #推荐文章
+    (r'^reconmend/$',                       'reconmend.views.reconmend'),
+    (r'^reconmend/save/$',                  'reconmend.views.save'),
+    (r'^reconmend/list/$',                  'reconmend.views.list'),
+    (r'^reconmend/delete/(?P<id>[\d]+)/$',  'reconmend.views.delete'),
 )
 

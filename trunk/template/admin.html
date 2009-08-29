@@ -6,10 +6,14 @@
 </head>
 <body>
 {% if is_user_admin%}
-<a href="/article/write/">发布文章</a>
-<a href="{{logout_url}}">退出</a>
+<a href="/article/write/">发布文章</a><br/>
+<br/>
+<a href="/reconmend/list/">查看推荐链接</a><br/>
+<br/>
+<a href="{{logout_url}}">退出</a><br/>
 {% else %}
 <a href="{{login_url}}">管理员登录</a><br/>
+<br/>
 <a href="/">返回首页</a><br/>
 {% endif %}
 

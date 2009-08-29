@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>
+		技闻-网站管理
+	</title>
+</head>
+<body>
+
+<table>
+{% for reconmend in reconmends %}
+	<tr>
+		<td><a href="{{ reconmend.url }}">{{ reconmend.url }}</a></td>
+		<td>  </td>
+		<td><a href="/reconmend/delete/{{ reconmend.id }}/">删除</a></td>
+	</tr>
+{% endfor%}
+</table>
+
+</body>
+</html>

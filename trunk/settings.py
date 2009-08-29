@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('ooaixt', 'doggod999@gmail.com'),
+    ('jiwen', 'jiwench@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -53,4 +53,5 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'django.contrib.contenttypes',
+    'reconmend',
 )
