@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>
+	技闻-{{article.title}}
+</title>
+{% endblock%}
+
+{% block content %}
+<div id="mainWrapper">
+    <div class="contentLefts">
+        <div class="article">
+            <h3>{{article.title}}</h3> 
+			<!-- <div class="ADup">ad</div> -->
+			{% autoescape off %}<div class="article_content">{{article.content}}</div>{% endautoescape %}
+			<div class="article_foot">阅读人数： {{article.read_count}} | 发表时间： {{article.post_time|date:"Y-m-d H:i"}}</div>
+			<div class="article_foot">来源： {{article.from_url}}</div>
+			{% if article_pre%}
+			<p><a href="/article/{{article_pre.id}}/">上一篇: {{article_pre.title}}</a></p>
+			{% endif %}
+			{% if article_nxt%}
+			<p><a href="/article/{{article_nxt.id}}/">下一篇: {{article_nxt.title}}</a></p>
+			{% endif %}
+		</div>
+        
+    </div>
+    <div class="contentRights">
+		{% include 'post.html' %}
+		{% include 'link.html' %}
+        {% include 'contact.html' %}
+		<!-- {% include 'ADleft.html' %} -->
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="secondMain">
+	<div class="reconmend">
+	<h5>相似文章</h5>
+		<ul>
+		{% for article in articles_rec %}
+			<li><a href="/article/{{article.id}}/" title="{{article.title}}">{{article.title}}</a></li>
+		{% endfor %}
+		</ul>
+			<p>
+				<a href="/category/{{article.category}}/">
+					更多>>></a>
+			</p>
+	</div>
+	<!-- {% include 'ADsecondleft.html' %} -->
+</div>
+<div class="clear"></div>
+{% endblock %}

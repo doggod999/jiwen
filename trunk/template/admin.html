@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>
+		技闻-网站管理
+	</title>
+</head>
+<body>
+{% if is_user_admin%}
+<a href="/article/write/">发布文章</a>
+<a href="{{logout_url}}">退出</a>
+{% else %}
+<a href="{{login_url}}">管理员登录</a><br/>
+<a href="/">返回首页</a><br/>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	{% block title %} {% endblock %}
+	<meta name="Description" content="技闻,文章收录,Java,Web,Python,Django,JQuery,Google App Engine,dotNet,C++,Linux,嵌入式" />
+	<meta name="Keywords" content="技闻,java,web,Python,C#,javascript,dotNet,Linux" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="Distribution" content="Global" />
+	<meta name="Author" content="jiwench, jiwench@gmail.com" />
+	<meta name="Robots" content="index,follow" />
+	<meta name="verify-v1" content="deXt+fkwmAJwDyY/pJHuaypQD1CMSD77Mftz2BQ25M8=" >
+	<link rel="stylesheet" type="text/css" href="/media/style/style.css"> 
+	<script type="text/javascript" src="/media/jquery/jquery.js"></script>
+	{% block other_media%} {% endblock %}
+</head>
+<body>
+    <div id="wrapper">
+        <div id="innerWrapper">
+			<div id="header">
+			    <p class="logo">
+			        <img alt="技闻-简单，坚持，造就完美" src="/media/style/images/logo.jpg">
+				</p>
+				<p class="banner">
+					<span>最全、最实用的技术文章收录网站</span>
+				</p>
+			</div>  
+			<div class="clear"></div>
+			<div id="navi">
+			    <ul>
+					<li {% ifequal category 'home'%}class="current"{% endifequal %}><a href="/"><span>首页</span></a></li>
+					<li {% ifequal category 'newest'%}class="current"{% endifequal %}><a href="/category/newest/"><span>最新文章</span></a></li>
+					<li {% ifequal category 'reconmend'%}class="current"{% endifequal %}><a href="/category/reconmend/"><span>推荐文章</span></a></li>
+					<li {% ifequal category 'all'%}class="current"{% endifequal %}><a href="/category/all/"><span>所有文章</span></a></li>
+					<li {% ifequal category 'java'%}class="current"{% endifequal %}><a href="/category/java/"><span>Java</span></a></li>
+					<li {% ifequal category 'dotnet'%}class="current"{% endifequal %}><a href="/category/dotnet/"><span>.Net</span></a></li>
+					<li {% ifequal category 'cpp'%}class="current"{% endifequal %}><a href="/category/cpp/"><span>C++</span></a></li>
+					<li {% ifequal category 'script'%}class="current"{% endifequal %}><a href="/category/script/"><span>脚本语言</span></a></li>
+					<li {% ifequal category 'php'%}class="current"{% endifequal %}><a href="/category/php/"><span>PHP</span></a></li>
+					<li {% ifequal category 'web'%}class="current"{% endifequal %}><a href="/category/web/"><span>Web</span></a></li>
+					<li {% ifequal category 'database'%}class="current"{% endifequal %}><a href="/category/database/"><span>数据库</span></a></li>
+					<li {% ifequal category 'seo'%}class="current"{% endifequal %}><a href="/category/seo/"><span>SEO</span></a></li>
+					<li {% ifequal category 'linux'%}class="current"{% endifequal %}><a href="/category/linux/"><span>Linux</span></a></li>
+				</ul>
+			</div>
+			<div class="search">
+				<div class="text">找不到您看过的文章？快使用搜索功能</div>
+				<!-- google自定义搜索 -->
+				<form action="http://www.google.com/cse" id="cse-search-box">
+				  <div>
+				    <input type="hidden" name="cx" value="013830791834328873144:auhjclwcbi8" />
+				    <input type="hidden" name="ie" value="UTF-8" />
+				    <input class="textbox" type="text" name="q" size="31" />
+				    <input class="button" type="submit" name="sa" value="搜索" />
+				  </div>
+				</form>
+				<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+			</div>
+
+{% block content %} {% endblock %}
+            
+<div class="last_menu">
+	<h5>站点导航</h5>
+	<div class="cont">
+	<a href="/">首页</a> | <a href="/category/newest/">最新文章</a> | <a href="/category/reconmend/">推荐文章</a> | <a href="/category/all/">所有文章</a> | <a href="/category/java/">Java</a> | <a href="/category/dotnet/">.Net</a> | <a href="/category/cpp/">C++</a> | <a href="/category/script/">脚本语言</a> | <a href="/category/php/">PHP</a> | <a href="/category/web/">Web设计</a> | <a href="/category/database/">数据库</a> | <a href="/category/seo/">SEO</a> | <a href="/category/linux/">Linux</a>
+	</div>
+</div>
+            
+<div class="footer">
+    <dl>
+        <dt>
+        </dt>
+		<dt>
+		<a href="/login/">管理入口</a> | <a target="_blank" href="http://www.google.com/analytics/">流量统计</a>
+        </dt>
+		<dd>
+            Copyright © 2009, jiwench.appspot.com, All Rights Reserved. 
+		</dd>
+    </dl>
+</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9252796-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+</body></html>

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>
+	技闻-简单，坚持，造就完美
+</title>
+{% endblock%}
+
+{% block content %}
+<div id="mainWrapper">
+    <div class="contentLefts">
+        <div class="newest">
+            <h5>最新文章</h5>          
+			<ul>
+			{% for article in articles_newest %}
+       			<li class="{% cycle 'odd' 'even' %}"><span>{{article.post_time|date:"Y-m-d H:i"}}</span><a target="_blank" href="/article/{{article.id}}/" title="{{article.title}}">{{article.title}}</a> </li>
+   			{% endfor %}
+			</ul>
+			<p>
+				<a target="_blank" href="/category/newest/">
+					更多>>></a>
+			</p>
+		</div>
+		<div class="newest">
+            <h5>推荐文章</h5>          
+			<ul>
+			{% for article in articles_rec %}
+				<li class="{% cycle 'odd' 'even' %}"><span>{{article.post_time|date:"Y-m-d H:i"}}</span><a target="_blank" href="/article/{{article.id}}/" title="{{article.title}}">{{article.title}}</a> </li>
+			{% endfor %}
+			</ul>
+			<p>
+				<a target="_blank" href="/category/reconmend/">
+					更多>>></a>
+			</p>
+        </div>
+        
+    </div>
+    <div class="contentRights">
+        {% include 'post.html' %}
+        {% include 'link.html' %}
+        {% include 'contact.html' %}
+    </div>
+    <div class="clear"></div>
+</div>
+{% endblock %}

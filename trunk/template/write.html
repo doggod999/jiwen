@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>
+	技闻-发表文章
+</title>
+	<link rel="stylesheet" href="/media/style/write.css" type="text/css" />
+	<script type="text/javascript" src="/media/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/media/jquery/jquery.FCKEditor.js"></script>
+	<script type="text/javascript" src="/media/fckeditor/fckeditor.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+        //初始化FCKEditor
+        $.fck.config = {path: '/media/fckeditor/', height: 400, width: 1000};
+        $('textarea#article_content').fck();  
+      
+    });
+    </script>
+</head>
+<body>
+<form id="add_article_form" action="/article/save/" method="POST">
+	<input id="article_id" name="article_id" type="hidden" value="{{article.id}}">
+	<p>
+		分类：<select id="article_category" name="article_category" >
+			{% for category in categories %}
+			<option value="{{category}}" {% ifequal category article.category %}selected="selected"{% endifequal %}>{{category}}</option>
+			{% endfor %}
+		</select>
+		标题：<input type="text" id="article_title" name="article_title" value="{{article.title}}" size="100" />
+		推荐<input type="checkbox" id="article_reconmend" name="article_reconmend">
+	</p>
+	<p>
+		<textarea id="article_content" name="article_content">{{article.content}}</textarea>
+	</p>
+	<p>
+		 来源：<input type="text" id="article_from_url" name="article_from_url" value="{{article.from_url}}" size="100"/>
+	</p>
+	<p>
+		<input type="submit" value="保存">
+		<input type="button" value="取消" onclick="window.history.back()">
+	</p>
+</form>
+</body>
+</html>

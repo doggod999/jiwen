@@ -1,0 +1,47 @@
+/* Top Elements */
+* { margin: 0; padding: 0; }
+
+body {
+	background: #CCCCCC;
+	font: 0.75em Verdana, Tahoma, arial, sans-serif;
+	color: #333; 
+}
+
+form{
+	text-align:left;
+}
+
+p {
+	padding: 10px;		
+	margin: 0;
+}
+
+label {
+	display:block;
+	font-weight:bold;
+	margin:5px 0;
+}
+
+input, select {
+	padding:2px;
+	border:1px solid #eee;
+	font: normal 1em Verdana, sans-serif;
+	color:#777;
+}
+textarea {
+	width:400px;
+	padding:2px;
+	font-family: Verdana, sans-serif;
+	border:1px solid #eee;
+	height:100px;
+	display:block;
+	color:#777;
+}
+input.button { 
+	margin: 0; 
+	font: bolder 12px Arial, Sans-serif; 
+	border: 1px solid #CCC; 
+	padding: 2px 3px; 
+	background: #FFF;
+	color: #88ac0b;
+}
