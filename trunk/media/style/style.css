@@ -375,7 +375,7 @@ a:hover{text-decoration: underline;}
 	padding-left:30px;
 	font-size:25px;
 	line-height:22px;	
-	text-align:center;
+	text-align: left;
 }
 
 .article p{ text-align:left; padding:1px 6px 7px 0;}
