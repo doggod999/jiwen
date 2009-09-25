@@ -11,7 +11,21 @@
     <div class="contentLefts">
         <div class="article">
             <h3>{{article.title}}</h3> 
-			<!-- <div class="ADup">ad</div> -->
+            
+            
+			<div class="ADup"><script type="text/javascript"><!--
+google_ad_client = "pub-3757168957026583";
+/* 468x60, 创建于 09-9-25 */
+google_ad_slot = "4215791532";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+
+
 			{% autoescape off %}<div class="article_content">{{article.content}}</div>{% endautoescape %}
 			<div class="article_foot">阅读人数： {{article.read_count}} | 发表时间： {{article.post_time|date:"Y-m-d H:i"}}
 			{% if is_admin%} | <a href="/article/{{article.id}}/write/">修改文章</a>
@@ -31,7 +45,7 @@
 		{% include 'post.html' %}
 		{% include 'link.html' %}
         {% include 'contact.html' %}
-		<!-- {% include 'ADleft.html' %} -->
+		{% include 'ADleft.html' %}
     </div>
     <div class="clear"></div>
 </div>
@@ -48,7 +62,7 @@
 					更多>>></a>
 			</p>
 	</div>
-	<!-- {% include 'ADsecondleft.html' %} -->
+	{% include 'ADsecondleft.html' %}
 </div>
 <div class="clear"></div>
 {% endblock %}
