@@ -51,6 +51,7 @@ def article(request, article_id):
 			   'article_pre':article_pre,
 			   'article_nxt':article_nxt,
 			   'articles_rec':articles_rec,
+               'category':article.category,
                'is_admin':users.is_current_user_admin(),
 			   }
         
