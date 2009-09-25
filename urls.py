@@ -8,9 +8,11 @@ urlpatterns = patterns('',
     
     #发表、编辑文章
     (r'^article/write/$', 'views.write'),
+    (r'^article/(?P<article_id>[\w]+)?/write/$',    'views.write'),
     (r'^article/save/$', 'views.save'),
+    (r'^article/(?P<article_id>[\w]+)?/save/$',    'views.save'),
     #显示文章
-    (r'^article/(?P<article_id>[\w-]+)/$',    'views.article'),
+    (r'^article/(?P<article_id>[\w]+)/$',    'views.article'),
     (r'^category/(?P<category>[\w]+)/(?P<p_id>[\d]+)?/?$', 'views.category'),
     
     #网站图标

@@ -13,7 +13,10 @@
             <h3>{{article.title}}</h3> 
 			<!-- <div class="ADup">ad</div> -->
 			{% autoescape off %}<div class="article_content">{{article.content}}</div>{% endautoescape %}
-			<div class="article_foot">阅读人数： {{article.read_count}} | 发表时间： {{article.post_time|date:"Y-m-d H:i"}}</div>
+			<div class="article_foot">阅读人数： {{article.read_count}} | 发表时间： {{article.post_time|date:"Y-m-d H:i"}}
+			{% if is_admin%} | <a href="/article/{{article.id}}/write/">修改文章</a>
+			{% endif %}
+			</div>
 			<div class="article_foot">来源： {{article.from_url}}</div>
 			{% if article_pre%}
 			<p><a href="/article/{{article_pre.id}}/">上一篇: {{article_pre.title}}</a></p>
