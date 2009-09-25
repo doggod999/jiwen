@@ -47,12 +47,13 @@ def article(request, article_id):
 	articles_rec = db.GqlQuery("SELECT * FROM Article WHERE category = :category "
                 "ORDER BY id DESC",
                 category=article.category).fetch(10)
-	
 	context = {'article':article,
 			   'article_pre':article_pre,
 			   'article_nxt':article_nxt,
-			   'articles_rec':articles_rec
+			   'articles_rec':articles_rec,
+               'is_admin':users.is_current_user_admin(),
 			   }
+        
 	return render_to_response('article.html', context)
 
 def admin(request):
@@ -68,12 +69,21 @@ def admin(request):
 			   }
 	return render_to_response('admin.html', context)
 
-def write(request):
-	if not users.is_current_user_admin():
-		return HttpResponseRedirect('/admin/')
-	context = {'categories':static.categories
-			   }
-	return render_to_response('write.html', context)
+def write(request, article_id=None):
+    if not users.is_current_user_admin():
+        return HttpResponseRedirect('/admin/')
+    article = None
+    if article_id :
+        article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
+    context = {'categories':static.categories,
+               'article':article,
+               }
+    return render_to_response('write.html', context)
+#    if article_id :
+#        article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
+#        context.update({'article': article})
+    
+	
 
 def save(request, article_id=None):
 	if not users.is_current_user_admin():

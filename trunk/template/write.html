@@ -17,7 +17,7 @@
     </script>
 </head>
 <body>
-<form id="add_article_form" action="/article/save/" method="POST">
+<form id="add_article_form" action="/article/{% if article%}{{article.id}}/{%endif%}save/" method="POST">
 	<input id="article_id" name="article_id" type="hidden" value="{{article.id}}">
 	<p>
 		分类：<select id="article_category" name="article_category" >
