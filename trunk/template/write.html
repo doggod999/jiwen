@@ -18,7 +18,7 @@
 </head>
 <body>
 <form id="add_article_form" action="/article/{% if article%}{{article.id}}/{%endif%}save/" method="POST">
-	<input id="article_id" name="article_id" type="hidden" value="{{article.id}}">
+	<input id="article_id" name="article_id" type="hidden" value="{{article.id}}"/>
 	<p>
 		分类：<select id="article_category" name="article_category" >
 			{% for category in categories %}
@@ -26,7 +26,7 @@
 			{% endfor %}
 		</select>
 		标题：<input type="text" id="article_title" name="article_title" value="{{article.title}}" size="100" />
-		推荐<input type="checkbox" id="article_reconmend" name="article_reconmend">
+		推荐<input type="checkbox" id="article_reconmend" name="article_reconmend" {% if article.recommend %} checked="checked" {% endif %}/>
 	</p>
 	<p>
 		<textarea id="article_content" name="article_content">{{article.content}}</textarea>
