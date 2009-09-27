@@ -40,7 +40,7 @@
                 {% if articles.has_previous %}<a href="/category/{{category}}/{{ articles.previous_page_number }}/">上一页</a>{% endif %}
                 {% if not articles.has_previous %}上一页 {% endif %}
                 
-                {% for index in articles.paginator.page_range%}
+                {% for index in page_range%}
                     {% ifequal articles.number index%}
                         [{{index}}]
                     {% endifequal%}

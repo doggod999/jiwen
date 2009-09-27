@@ -80,11 +80,7 @@ def write(request, article_id=None):
                'article':article,
                }
     return render_to_response('write.html', context)
-#    if article_id :
-#        article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
-#        context.update({'article': article})
-    
-	
+
 
 def save(request, article_id=None):
 	if not users.is_current_user_admin():
@@ -123,7 +119,7 @@ def category(requset, category, p_id=None):
 	                "ORDER BY id DESC",
 	                category=category).fetch(1000)
 	
-	paginator = Paginator(articles_all, 10)
+	paginator = Paginator(articles_all, 1)
 	
 	try:
 		page_index = int(p_id)
@@ -132,12 +128,22 @@ def category(requset, category, p_id=None):
 	
 	try:
 		articles = paginator.page(page_index)
+		page_range = paginator.page_range
+            	
 	except (EmptyPage, InvalidPage):
 		articles = paginator.page(paginator.num_pages)
-    
+        page_range = paginator.page_range
+            
+        if((12 in paginator.page_range) and (page_index <= 6)):
+            page_range = page_range[:12]
+            
+        if(page_index > 6):
+            page_range = page_range[(page_index-6): (page_index+6)]
+
 	context = {'articles': articles,
-			   'category_title':static.category_title[category],
-			   'category':category
+               'page_range': page_range,
+			   'category_title': static.category_title[category],
+			   'category': category,
 			   }
 	return render_to_response('category.html', context)
 
