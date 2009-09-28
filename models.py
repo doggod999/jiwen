@@ -12,3 +12,8 @@ class Article(db.Model):
 	category = db.StringProperty()
 	from_url = db.URLProperty()
 	recommend = db.BooleanProperty(required=True, default=False)
+	
+class Meta(db.Model):
+	id = db.IntegerProperty()
+	keys = db.StringProperty()
+	description = db.TextProperty()
