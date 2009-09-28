@@ -119,7 +119,7 @@ def category(requset, category, p_id=None):
 	                "ORDER BY id DESC",
 	                category=category).fetch(1000)
 	
-	paginator = Paginator(articles_all, 1)
+	paginator = Paginator(articles_all, 10)
 	
 	try:
 		page_index = int(p_id)
