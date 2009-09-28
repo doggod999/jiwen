@@ -6,6 +6,11 @@
 </title>
 {% endblock%}
 
+{% block other_meta %}
+	<meta name="Description" content="{{meta.description}}" />
+	<meta name="Keywords" content="{{meta.keys}}" />
+{% endblock%}
+
 {% block content %}
 <div id="mainWrapper">
     <div class="contentLefts">

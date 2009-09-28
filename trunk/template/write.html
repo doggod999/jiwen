@@ -32,7 +32,10 @@
 		<textarea id="article_content" name="article_content">{{article.content}}</textarea>
 	</p>
 	<p>
-		 来源：<input type="text" id="article_from_url" name="article_from_url" value="{{article.from_url}}" size="100"/>
+		 来源：<input type="text" id="article_from_url" name="article_from_url" value="{{article.from_url}}" size="80"/> 关键词：<input type="text" id="meta_keys" name="meta_keys" value="{{meta.keys}}" size="30"/>
+	</p>
+	<p>
+		 描述：<input type="text" id="meta_description" name="meta_description" value="{{meta.description}}" size="100"/>
 	</p>
 	<p>
 		<input type="submit" value="保存">

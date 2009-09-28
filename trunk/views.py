@@ -11,6 +11,7 @@ from google.appengine.api import users
 from google.appengine.ext import db
 
 from models import Article
+from models import Meta
 import static
 
 def article_save(article):
@@ -22,6 +23,7 @@ def article_save(article):
         id = 1
     article.id = id
     article.put()
+    return id
 
 def index(request):
 	articles_newest = db.GqlQuery("SELECT * FROM Article ORDER BY id DESC").fetch(10)
@@ -36,6 +38,7 @@ def index(request):
 
 def article(request, article_id):
 	article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
+	meta = db.GqlQuery("SELECT * FROM Meta WHERE id = :id", id=long(article_id)).get()
 	if not article:
 		return HttpResponseRedirect('/')
 	
@@ -52,6 +55,7 @@ def article(request, article_id):
 			   'article_nxt':article_nxt,
 			   'articles_rec':articles_rec,
                'category':article.category,
+			   'meta': meta,
                'is_admin':users.is_current_user_admin(),
 			   }
         
@@ -76,8 +80,10 @@ def write(request, article_id=None):
     article = None
     if article_id :
         article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
+        meta = db.GqlQuery("SELECT * FROM Meta WHERE id = :id", id=long(article_id)).get()
     context = {'categories':static.categories,
                'article':article,
+               'meta': meta,
                }
     return render_to_response('write.html', context)
 
@@ -88,8 +94,14 @@ def save(request, article_id=None):
 	if request.method == 'POST':
 		if article_id:
 			article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
+			meta = db.GqlQuery("SELECT * FROM Meta WHERE id = :id", id=long(article_id)).get()
+			if not meta:
+				meta = Meta()
 		else:
 			article = Article()
+			meta = Meta()
+		meta.keys = request.POST['meta_keys']	
+		meta.description = request.POST['meta_description']	
 		article.category = request.POST['article_category']	
 		article.title = request.POST['article_title']
 		article.content = db.Text(request.POST['article_content'])
@@ -101,8 +113,11 @@ def save(request, article_id=None):
 		#New or update
 		if article_id:
 			article.put()
+			meta.id = long(article_id)
+			meta.put()
 		else:
-			article_save(article)
+			meta.id = article_save(article)
+			meta.put()
 		return HttpResponse('''发表成功！<br/>\
 							<a href="/article/write/">继续发表文章</a>\
 							<a href="/">首页</a>''')
