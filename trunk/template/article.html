@@ -32,6 +32,19 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 
 			{% autoescape off %}<div class="article_content">{{article.content}}</div>{% endautoescape %}
+			
+			<div class="ADdown"><script type="text/javascript"><!--
+google_ad_client = "pub-3757168957026583";
+/* 728x90, 创建于 09-9-28 */
+google_ad_slot = "9214269604";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+			
 			<div class="article_foot">阅读人数： {{article.read_count}} | 发表时间： {{article.post_time|date:"Y-m-d H:i"}}
 			{% if is_admin%} | <a href="/article/{{article.id}}/write/">修改文章</a>
 			{% endif %}

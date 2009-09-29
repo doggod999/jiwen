@@ -78,6 +78,7 @@ def write(request, article_id=None):
     if not users.is_current_user_admin():
         return HttpResponseRedirect('/admin/')
     article = None
+    meta = None
     if article_id :
         article = db.GqlQuery("SELECT * FROM Article WHERE id = :id", id=long(article_id)).get()
         meta = db.GqlQuery("SELECT * FROM Meta WHERE id = :id", id=long(article_id)).get()
