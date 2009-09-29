@@ -382,7 +382,7 @@ a:hover{text-decoration: underline;}
 
 .article_content{
 	font-size:15px;
-	padding:20px;
+	padding:0px 20px 0px 20px;
 }
 
 .article_foot{
@@ -405,4 +405,11 @@ a:hover{text-decoration: underline;}
 .ADup{
 	margin-top:20px;
 	margin-left:20px;
+}
+
+.ADsecondleft h5{
+	background:#E8F6FF 12px 8px no-repeat;
+	padding-left:30px;
+	font-size:12px;
+	line-height:24px;
 }
