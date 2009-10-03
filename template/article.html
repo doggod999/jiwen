@@ -16,20 +16,6 @@
     <div class="contentLefts">
         <div class="article">
             <h3>{{article.title}}</h3> 
-            
-            
-			<div class="ADup"><script type="text/javascript"><!--
-google_ad_client = "pub-3757168957026583";
-/* 468x60, 创建于 09-9-25 */
-google_ad_slot = "4215791532";
-google_ad_width = 468;
-google_ad_height = 60;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script></div>
-
 
 			{% autoescape off %}<div class="article_content">{{article.content}}</div>{% endautoescape %}
 			
@@ -44,6 +30,9 @@ google_ad_height = 90;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script></div>
+			<div class="article_link">
+			本站永久地址：<a href="http://jiwench.appspot.com/">http://jiwench.appspot.com/</a><br />
+			转载请保留文章出处：<a href="/article/{{article.id}}/">http://jiwench.appspot.com/article/{{article.id}}/</a></div>
 			
 			<div class="article_foot">阅读人数： {{article.read_count}} | 发表时间： {{article.post_time|date:"Y-m-d H:i"}}
 			{% if is_admin%} | <a href="/article/{{article.id}}/write/">修改文章</a>
@@ -61,7 +50,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     </div>
     <div class="contentRights">
 		{% include 'post.html' %}
-		{% include 'link.html' %}
         {% include 'contact.html' %}
 		{% include 'ADleft.html' %}
     </div>
