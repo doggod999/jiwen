@@ -415,6 +415,11 @@ a:hover{text-decoration: underline;}
 	margin-left:20px;
 }
 
+.ADleft{
+	border:solid 1px #b2b2b2;
+	padding-left: 20px;
+}
+
 .article_link{
 	font-size:15px;
 	margin-bottom:20px;
